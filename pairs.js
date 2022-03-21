@@ -35,13 +35,58 @@
 Array.prototype.getRandom = function () {
   return this.splice(Math.floor(Math.random() * this.length), 1)[0];
 };
-
 function pairs(names) {
-  // Your code goes here
+  let emptyarr = [];
+
+  if (names === undefined) {
+    return emptyarr;
+  } else if (names.length === 0) {
+    return emptyarr;
+  }
+  let len = names.length;
+
+  if (len % 2 === 0) {
+    while (names.length !== 0) {
+      let smallarray = [];
+      while (smallarray.length < 2) {
+        let random = names.getRandom();
+        smallarray.push(random);
+      }
+      emptyarr.push(smallarray);
+    }
+    return emptyarr;
+  } else {
+    while (names.length !== 0) {
+      let smallarray = [];
+      if (names.length === 1) {
+        let smallarray = names;
+        emptyarr.push(smallarray);
+        return emptyarr;
+      } else {
+        while (smallarray.length < 2) {
+          let random = names.getRandom();
+          smallarray.push(random);
+        }
+      }
+
+      emptyarr.push(smallarray);
+    }
+  }
 }
 
 module.exports = pairs;
 
+console.log(
+  typeof pairs([
+    "Asis",
+    "Hamsa",
+    "Fawas",
+    "Mishmish",
+    "Hussein",
+    "Lailz",
+    "Mr Potato",
+  ])
+);
 console.log(
   pairs(["Asis", "Hamsa", "Fawas", "Mishmish", "Hussein", "Lailz", "Mr Potato"])
 );
